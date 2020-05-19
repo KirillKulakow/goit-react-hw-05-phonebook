@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: fixed;
+    width: 230px;
+    height: 60px;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(255, 0, 0, 0.5);
+    padding: 0 10px;
+    border-radius: 6px;
+    color: #fff;
+}
+.title{
+    margin: 0;
+    width: 100%;
+}
+.info{
+    margin: 0;
+    width: 100%;
+}

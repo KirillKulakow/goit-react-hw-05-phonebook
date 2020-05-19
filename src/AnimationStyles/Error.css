@@ -1,0 +1,16 @@
+.error_animation-enter {
+    opacity: 0;
+    transform: translateX(300px);
+}
+.error_animation-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 250ms;
+}
+.error_animation-exit {
+    transform: translate(0px);
+}
+.error_animation-exit-active {
+    transform: translate(300px);
+    transition: all 250ms;
+}

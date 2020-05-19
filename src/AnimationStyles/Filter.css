@@ -1,0 +1,18 @@
+.filter_animation-enter {
+    opacity: 0;
+    transform: scale(0.8);
+}
+.filter_animation-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 250ms;
+}
+.filter_animation-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+.filter_animation-exit-active {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 250ms;
+}

@@ -1,0 +1,18 @@
+.contact_animation-enter {
+    opacity: 0;
+    transform: translateX(-100px);
+}
+.contact_animation-enter-active {
+    opacity: 1;
+    transform: translateX(0px);
+    transition: all 250ms;
+}
+.contact_animation-exit {
+    opacity: 1;
+    transform: translateX(0px);
+}
+.contact_animation-exit-active {
+    opacity: 0;
+    transform: translateX(200px);
+    transition: all 250ms;
+}
