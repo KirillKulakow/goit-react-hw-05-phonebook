@@ -6,7 +6,7 @@ import './AnimationStyles/Contact.css';
 import './AnimationStyles/Filter.css';
 import NavBar from './Components/NavBar/NavBar';
 import Form from './Components/Form/Form';
-import FilterArea from './Components/FilterArea/FilterArea';
+import FilterContacts from './Components/FilterContacts/FilterContacts';
 import ContactList from './Containers/ContactList/ContactList';
 import Contact from './Components/Contact/Contact';
 import Error from './Components/Error/Error';
@@ -14,7 +14,7 @@ import Error from './Components/Error/Error';
 function App() {
   const [contacts, setContacts] = useState([{id: 1, name: 'Rosie Empson', number: '333-65-19'}, {id: 2, name: 'Kira Nelson', number: '652-72-58'}, {id: 3, name: 'Calli Roser', number: '333-65-21'}, {id: 4, name: 'Josh Rembic', number: '373-65-20'}]);
   const [error, setError] = useState(false);
-  const [filter, setFilter] = useState([]);
+  const [filterQuery, setFilterQuery] = useState('');
 
   const addToContacts = (obj) => {
     if(contacts.some(el => el.name === obj.name) || contacts.some(el => el.number === obj.number)){
@@ -30,8 +30,7 @@ function App() {
   };
 
   const filteredContacts = (query) => {
-    let newItem = contacts.filter(element => (element.name.toLowerCase()).includes(query.toLowerCase()));
-    setFilter(newItem);
+    return contacts.filter(element => (element.name.toLowerCase()).includes(query.toLowerCase()));
   };
 
   useEffect(() => {
@@ -43,19 +42,15 @@ function App() {
     }
   },[error]);
 
-  useEffect(() => {
-    setFilter([...contacts])
-  },[contacts]);
-
   return (
       <>
       <NavBar/>
       <Form addToContacts={addToContacts}/>
       <CSSTransition in={contacts.length > 1} timeout={250} classNames='filter_animation' unmountOnExit>
-        <FilterArea filteredContacts={filteredContacts}/>
+      <FilterContacts setFilterQuery={setFilterQuery} filterQuery={filterQuery}/>
       </CSSTransition>
       {!!contacts && <ContactList>
-        {(filter.length ? filter : contacts).map((item) => (
+        {(!!filterQuery ? filteredContacts(filterQuery) : contacts).map((item) => (
           <CSSTransition key={item.id} timeout={250} classNames='contact_animation'>
             <Contact {...item} deleteFromContacts={deleteFromContacts}/>
           </CSSTransition>

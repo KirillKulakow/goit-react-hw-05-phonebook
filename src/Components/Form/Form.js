@@ -3,30 +3,32 @@ import styles from './Form.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
 const Form = ({addToContacts}) => {
-    const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [numberPhone, setNumberPhone] = useState('');
 
     const nameChange = (e) => {
-        setName(e.target.value)
+        setFirstName(e.target.value)
     };
     const numberChange = (e) => {
-        setNumber(e.target.value)
+        setNumberPhone(e.target.value)
     };
-    const add = (e) => {
+    const addContacts = (e) => {
         e.preventDefault();
-        addToContacts({id: uuidv4(), name: name, number: number})
-        setName('');
-        setNumber('');
+        addToContacts({id: uuidv4(), name: firstName, number: numberPhone})
+        setFirstName('');
+        setNumberPhone('');
     };
 
     return (
         <div className={styles.container}>
             <form>
-                <label htmlFor='name' className={styles.label}>Name</label>
-                <input id='name' type='text' className={styles.input} value={name} onChange={nameChange}/>
-                <label htmlFor='number' className={styles.label}>Number</label>
-                <input id='number' type='tel' className={styles.input} value={number} onChange={numberChange}/>
-                <button className={styles.button} onClick={add} disabled={!name || !number}>Add contact</button>
+                <label className={styles.label}>Name
+                    <input type='text' className={styles.input} value={firstName} onChange={nameChange}/>
+                </label>
+                <label className={styles.label}>Number
+                    <input type='tel' className={styles.input} value={numberPhone} onChange={numberChange}/>
+                </label>
+                <button className={styles.button} onClick={addContacts} disabled={!firstName || !numberPhone}>Add contact</button>
             </form>
         </div>
     );

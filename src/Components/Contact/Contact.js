@@ -5,7 +5,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Contact = ({id, name, number, deleteFromContacts}) => {
 
-    const del = () => {
+    const deleteContact = () => {
         deleteFromContacts(id);
     };
 
@@ -13,7 +13,7 @@ const Contact = ({id, name, number, deleteFromContacts}) => {
         <li className={styles.contact}>
             <span className={styles.name}>{name}</span>
             <span className={styles.number}>{number}</span>
-            <button className={styles.delete} onClick={del}><FontAwesomeIcon icon={faTimes}/></button>
+            <button className={styles.delete} onClick={deleteContact}><FontAwesomeIcon icon={faTimes}/></button>
         </li>
     );
 };
